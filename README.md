@@ -1,4 +1,4 @@
-[Code Path iOS] Assignment #3
+[Code Path] Assignment #3
 =======
 
 Mailbox app!
