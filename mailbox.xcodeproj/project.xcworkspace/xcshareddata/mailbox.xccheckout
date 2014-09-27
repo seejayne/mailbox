@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3EB436D7-3C5B-4E56-93DB-1BE3FB8FFF23</string>
+	<key>IDESourceControlProjectName</key>
+	<string>mailbox</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BC024069E8AAEE8D7574FAF4C571A229A76D886F</key>
+		<string>https://github.com/seejayne/mailbox.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>mailbox.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BC024069E8AAEE8D7574FAF4C571A229A76D886F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/seejayne/mailbox.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BC024069E8AAEE8D7574FAF4C571A229A76D886F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BC024069E8AAEE8D7574FAF4C571A229A76D886F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>mailbox</string>
+		</dict>
+	</array>
+</dict>
+</plist>

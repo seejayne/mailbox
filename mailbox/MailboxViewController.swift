@@ -19,8 +19,6 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var listIconImageView: UIImageView!
     @IBOutlet weak var laterIconImageView: UIImageView!
     
-    
-    
     var imageCenter: CGPoint!
     
     // set up colors here
@@ -38,6 +36,26 @@ class MailboxViewController: UIViewController {
         messageView.backgroundColor = greyColor
 
     }
+    
+    func setBackcolorAlpha (backColor: UIColor, archAlpha: CGFloat, latAlpha: CGFloat, delAlpha: CGFloat, lisAlpha: CGFloat){
+        
+        // message background color
+        self.messageView.backgroundColor = backColor
+        
+        // alpha (1,1,0,0)
+        self.archiveIconImageView.alpha = archAlpha
+        self.laterIconImageView.alpha = latAlpha
+        self.deleteIconImageView.alpha = delAlpha
+        self.listIconImageView.alpha = lisAlpha
+    }
+    func setIconPosition (archPos: CGFloat, latPos: CGFloat, delPos: CGFloat, lisPos: CGFloat){
+        
+        // position (30, 280, 260, 60)
+        self.archiveIconImageView.center.x = archPos
+        self.laterIconImageView.center.x = latPos
+        self.deleteIconImageView.center.x = delPos
+        self.listIconImageView.center.x = lisPos
+    }
 
     @IBAction func onTap(sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -48,53 +66,84 @@ class MailboxViewController: UIViewController {
         var translation = gestureRecognizer.translationInView(view)
         var velocity = gestureRecognizer.velocityInView(view)
         
+        var leftOffset = CGFloat(30)
+        var rightOffset = CGFloat(350)
+        
         //dragging
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             imageCenter = messageImageView.center
+            
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             messageImageView.center.x = translation.x + imageCenter.x
             
-            println("\(translation)")
-            
-            // color changing
-            UIView.animateWithDuration(0.1, animations: {
-
+            // bg behaviors
+            UIView.animateWithDuration(0.2, animations: {
              
-                if translation.x > 60{
-                    //red
-                    self.messageView.backgroundColor = self.greenColor
-                    self.archiveIconImageView.center.x = translation.x - 30
+                // archive
+                if (translation.x > 60) && (translation.x < 260){
+                    self.setBackcolorAlpha(self.greenColor, archAlpha: 1, latAlpha: 0, delAlpha: 0, lisAlpha: 0)
+                     self.setIconPosition( translation.x - 30, latPos: 290, delPos: translation.x - 30, lisPos: 260)
+                // later
+                } else if (translation.x < -60) && (translation.x > -260) {
                     
-                } else if translation.x < -60{
-                    // yellow
-                    self.messageView.backgroundColor = self.yellowColor
-                    self.laterIconImageView.center.x = translation.x + 350
+                    self.setBackcolorAlpha(self.yellowColor,archAlpha: 0, latAlpha: 1, delAlpha: 0, lisAlpha: 0)
+                    self.setIconPosition( 30, latPos: translation.x + 350, delPos: 260, lisPos: translation.x +  350)
+                // delete
+                } else if (translation.x > 260) {
                     
+                    self.setBackcolorAlpha(self.redColor,archAlpha: 0, latAlpha: 0, delAlpha: 1, lisAlpha: 0)
+                    self.setIconPosition( translation.x - 30, latPos: 290, delPos: translation.x - 30, lisPos: 260)
+                // list
+                } else if (translation.x < -260){
+                    self.setBackcolorAlpha(self.brownColor,archAlpha: 0, latAlpha: 0, delAlpha: 0, lisAlpha: 1)
+                    self.setIconPosition(30, latPos: translation.x + 350, delPos: 260, lisPos: translation.x + 350)
+                // none
                 } else if (translation.x > -60) && (translation.x < 60){
-                    //grey
-                    self.messageView.backgroundColor = self.greyColor
+                    self.setBackcolorAlpha(self.greyColor,archAlpha: 1, latAlpha: 1, delAlpha: 0, lisAlpha: 0)
+                    self.setIconPosition(30, latPos: 290, delPos: 260, lisPos: 260)
+                    
                 }
                 
             }, completion:nil)
             
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
             
-           // move the message back if not dragged past trigger
-            UIView.animateWithDuration(0.2, animations: {
-                
-                
-                self.archiveIconImageView.center.x = 30
-                self.laterIconImageView.center.x = 350
-                
+           // reset everything
+           UIView.animateWithDuration(0.2, animations: {
+   
+            // none
+            if (translation.x < 60) && (translation.x > -60){
                 self.messageImageView.center.x = 160
+                self.setBackcolorAlpha(self.greyColor,archAlpha: 1, latAlpha: 1, delAlpha: 0, lisAlpha: 0)
+                self.setIconPosition(30, latPos: 290, delPos: 260, lisPos: 260)
+            // archive
+            } else if (translation.x > 60) && (translation.x < 260){
+                self.messageImageView.center.x = 520
+                self.setBackcolorAlpha(self.greenColor,archAlpha: 1, latAlpha: 0, delAlpha: 0, lisAlpha: 0)
+                self.setIconPosition(340, latPos: 290, delPos: 260, lisPos: 260)
+            // delete
+            } else if (translation.x > 260){
+                self.messageImageView.center.x = 520
+                self.setBackcolorAlpha(self.redColor,archAlpha: 0, latAlpha: 0, delAlpha: 1, lisAlpha: 0)
+                self.setIconPosition(30, latPos: 290, delPos: 340, lisPos: 260)
                 
-                //colors
-                self.messageView.backgroundColor = self.greyColor
-                
+            // later
+            } else if (translation.x > -260) && (translation.x < -60){
+                self.messageImageView.center.x = -520
+                self.setBackcolorAlpha(self.yellowColor,archAlpha: 0, latAlpha: 1, delAlpha: 0, lisAlpha: 0)
+                self.setIconPosition(30, latPos: -30, delPos: 260, lisPos: 260)
+
+            //list
+            } else if (translation.x < -260) {
+                self.messageImageView.center.x = -520
+                self.setBackcolorAlpha(self.brownColor,archAlpha: 0, latAlpha: 0, delAlpha: 0, lisAlpha: 1)
+                self.setIconPosition(30, latPos: 290, delPos: 260, lisPos: -30)
+
+            }
+            
             }, completion: nil)
 
         }
-
         
     }
 }
