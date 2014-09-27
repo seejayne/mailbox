@@ -88,6 +88,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" id="vju-1j-s56">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="T2y-0a-RQp">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="p2g-UN-Ehd">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -99,8 +113,10 @@
                         <outlet property="feedimageView" destination="EN0-t1-eZA" id="5Or-4b-Shj"/>
                         <outlet property="laterIconImageView" destination="rWA-rp-fRs" id="oUb-Wi-6aU"/>
                         <outlet property="listIconImageView" destination="9zg-5N-DhP" id="FFa-Yn-FsU"/>
+                        <outlet property="listView" destination="p2g-UN-Ehd" id="dI3-zq-Vpn"/>
                         <outlet property="messageImageView" destination="4Ky-Mi-xQa" id="VqO-7s-L2V"/>
                         <outlet property="messageView" destination="8H2-b6-bay" id="Nqq-v7-gkk"/>
+                        <outlet property="rescheduleView" destination="T2y-0a-RQp" id="INE-yE-6X2"/>
                         <outlet property="scrollView" destination="ggI-5Z-d9A" id="mtJ-Ju-HLM"/>
                     </connections>
                 </viewController>
@@ -125,10 +141,12 @@
         <image name="feed" width="320" height="1202"/>
         <image name="help_label" width="320" height="37"/>
         <image name="later_icon" width="25" height="25"/>
+        <image name="list" width="320" height="568"/>
         <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
+        <image name="reschedule" width="320" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

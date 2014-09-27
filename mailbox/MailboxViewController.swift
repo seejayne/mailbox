@@ -18,6 +18,8 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var deleteIconImageView: UIImageView!
     @IBOutlet weak var listIconImageView: UIImageView!
     @IBOutlet weak var laterIconImageView: UIImageView!
+    @IBOutlet weak var rescheduleView: UIImageView!
+    @IBOutlet weak var listView: UIImageView!
     
     var imageCenter: CGPoint!
     
@@ -132,13 +134,14 @@ class MailboxViewController: UIViewController {
                 self.messageImageView.center.x = -520
                 self.setBackcolorAlpha(self.yellowColor,archAlpha: 0, latAlpha: 1, delAlpha: 0, lisAlpha: 0)
                 self.setIconPosition(30, latPos: -30, delPos: 260, lisPos: 260)
+                self.rescheduleView.alpha = 1
 
             //list
             } else if (translation.x < -260) {
                 self.messageImageView.center.x = -520
                 self.setBackcolorAlpha(self.brownColor,archAlpha: 0, latAlpha: 0, delAlpha: 0, lisAlpha: 1)
                 self.setIconPosition(30, latPos: 290, delPos: 260, lisPos: -30)
-
+                self.listView.alpha = 1
             }
             
             }, completion: nil)
