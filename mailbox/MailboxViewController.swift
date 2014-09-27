@@ -14,14 +14,29 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var feedimageView: UIImageView!
     @IBOutlet weak var messageImageView: UIImageView!
     @IBOutlet weak var messageView: UIView!
+    @IBOutlet weak var archiveIconImageView: UIImageView!
+    @IBOutlet weak var deleteIconImageView: UIImageView!
+    @IBOutlet weak var listIconImageView: UIImageView!
+    @IBOutlet weak var laterIconImageView: UIImageView!
+    
+    
     
     var imageCenter: CGPoint!
     
+    // set up colors here
+    let greyColor = UIColor(red: (223/256), green: (228/256), blue: (232/256), alpha: 1)
+    let redColor = UIColor(red: (233/256), green: (85/256), blue: (59/256), alpha: 1)
+    let yellowColor = UIColor(red: (250/256), green: (211/256), blue: (51/256), alpha: 1)
+    let brownColor = UIColor(red: (215/256), green: (165/256), blue: (51/256), alpha: 1)
+    let greenColor = UIColor(red: (116/256), green: (215/256), blue: (104/256), alpha: 1)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize(width: 320, height: 1380)
-        messageView.backgroundColor = UIColor(red: (86/256), green: (185/256), blue: (217/256), alpha: 1)
         
+        scrollView.contentSize = CGSize(width: 320, height: 1380)
+        messageView.backgroundColor = greyColor
+
     }
 
     @IBAction func onTap(sender: UITapGestureRecognizer) {
@@ -29,11 +44,11 @@ class MailboxViewController: UIViewController {
     }
     @IBAction func onPanGesture(gestureRecognizer: UIPanGestureRecognizer) {
         
-        
         var location = gestureRecognizer.locationInView(view)
         var translation = gestureRecognizer.translationInView(view)
         var velocity = gestureRecognizer.velocityInView(view)
         
+        //dragging
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             imageCenter = messageImageView.center
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
@@ -42,15 +57,24 @@ class MailboxViewController: UIViewController {
             println("\(translation)")
             
             // color changing
-            UIView.animateWithDuration(0.2, animations: {
+            UIView.animateWithDuration(0.1, animations: {
 
-                // red
+             
                 if translation.x > 60{
-                    self.messageView.backgroundColor = UIColor(red: (181/256), green: (26/256), blue: (0/256), alpha: 1)
-                // yellow
-                } else if translation.x < 60{
-                    self.messageView.backgroundColor = UIColor(red: (255/256), green: (248/256), blue: (84/256), alpha: 1)
+                    //red
+                    self.messageView.backgroundColor = self.greenColor
+                    self.archiveIconImageView.center.x = translation.x - 30
+                    
+                } else if translation.x < -60{
+                    // yellow
+                    self.messageView.backgroundColor = self.yellowColor
+                    self.laterIconImageView.center.x = translation.x + 350
+                    
+                } else if (translation.x > -60) && (translation.x < 60){
+                    //grey
+                    self.messageView.backgroundColor = self.greyColor
                 }
+                
             }, completion:nil)
             
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
@@ -58,11 +82,14 @@ class MailboxViewController: UIViewController {
            // move the message back if not dragged past trigger
             UIView.animateWithDuration(0.2, animations: {
                 
-                if translation.x < 70{
-                    self.messageImageView.center.x = (320/2)
-                } else if translation.x > 70{
-                    self.messageImageView.center.x = (320/2)
-                }
+                
+                self.archiveIconImageView.center.x = 30
+                self.laterIconImageView.center.x = 350
+                
+                self.messageImageView.center.x = 160
+                
+                //colors
+                self.messageView.backgroundColor = self.greyColor
                 
             }, completion: nil)
 

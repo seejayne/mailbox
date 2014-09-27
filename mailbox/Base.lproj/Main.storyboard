@@ -26,19 +26,19 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="archive_icon" id="qBt-fu-hUs">
-                                                <rect key="frame" x="49" y="24" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_icon" id="9zg-5N-DhP">
-                                                <rect key="frame" x="244" y="24" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="later_icon" id="rWA-rp-fRs">
-                                                <rect key="frame" x="287" y="24" width="25" height="25"/>
+                                                <rect key="frame" x="8" y="24" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete_icon" id="ZFG-d7-ayo">
                                                 <rect key="frame" x="8" y="24" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_icon" id="9zg-5N-DhP">
+                                                <rect key="frame" x="287" y="24" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="later_icon" id="rWA-rp-fRs">
+                                                <rect key="frame" x="287" y="24" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" id="4Ky-Mi-xQa">
@@ -94,7 +94,11 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1430"/>
                     <connections>
+                        <outlet property="archiveIconImageView" destination="qBt-fu-hUs" id="bIC-6A-BVe"/>
+                        <outlet property="deleteIconImageView" destination="ZFG-d7-ayo" id="sAV-tr-qcJ"/>
                         <outlet property="feedimageView" destination="EN0-t1-eZA" id="5Or-4b-Shj"/>
+                        <outlet property="laterIconImageView" destination="rWA-rp-fRs" id="oUb-Wi-6aU"/>
+                        <outlet property="listIconImageView" destination="9zg-5N-DhP" id="FFa-Yn-FsU"/>
                         <outlet property="messageImageView" destination="4Ky-Mi-xQa" id="VqO-7s-L2V"/>
                         <outlet property="messageView" destination="8H2-b6-bay" id="Nqq-v7-gkk"/>
                         <outlet property="scrollView" destination="ggI-5Z-d9A" id="mtJ-Ju-HLM"/>
