@@ -35,7 +35,10 @@ class MailboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.contentSize = CGSize(width: 320, height: 1380)
+        //scrollView.contentSize = CGSize(width: 320, height: 1380)
+        
+        scrollView.contentSize.height = feedimageView.frame.height + messageImageView.frame.height + 165
+        
         messageView.backgroundColor = greyColor
 
     }
