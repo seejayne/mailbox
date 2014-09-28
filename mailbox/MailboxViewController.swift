@@ -20,8 +20,11 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var laterIconImageView: UIImageView!
     @IBOutlet weak var rescheduleView: UIImageView!
     @IBOutlet weak var listView: UIImageView!
+    @IBOutlet weak var mainContentView: UIView!
+    
     
     var imageCenter: CGPoint!
+    var mainContentCenter: CGPoint!
     var modalUp = false
     
     // set up colors here
@@ -35,10 +38,7 @@ class MailboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //scrollView.contentSize = CGSize(width: 320, height: 1380)
-        
         scrollView.contentSize.height = feedimageView.frame.height + messageImageView.frame.height + 165
-        
         messageView.backgroundColor = greyColor
 
     }
@@ -77,7 +77,32 @@ class MailboxViewController: UIViewController {
                 self.shiftFeed()
                 }, completion: nil)
         }
-
+    }
+    
+    // Page edge thing didnt really work, using a regular pan instead.
+    @IBAction func onNavPan(sender: UIPanGestureRecognizer) {
+        var location = sender.locationInView(view)
+        var translation = sender.translationInView(view)
+        var velocity = sender.velocityInView(view)
+        
+        if sender.state == UIGestureRecognizerState.Began{
+            self.mainContentCenter = mainContentView.center
+        } else if sender.state == UIGestureRecognizerState.Changed{
+            if mainContentView.center.x >= 160 {
+                self.mainContentView.center.x = translation.x + mainContentCenter.x
+            } else {
+                self.mainContentView.center.x = 160
+            }
+        } else if sender.state == UIGestureRecognizerState.Ended{
+            
+            UIView.animateWithDuration(0.3, animations:{
+                if velocity.x > 0 {
+                    self.mainContentView.center.x = 450
+                } else {
+                    self.mainContentView.center.x = 160
+                }
+            })
+        }
     }
     @IBAction func onPanGesture(gestureRecognizer: UIPanGestureRecognizer) {
         
@@ -98,12 +123,10 @@ class MailboxViewController: UIViewController {
                 self.setIconPosition( translation.x - 30, latPos: 290, delPos: translation.x - 30, lisPos: 260)
                 // later
             } else if (translation.x < -60) && (translation.x > -260) {
-                
                 self.setBackcolorAlpha(self.yellowColor,archAlpha: 0, latAlpha: 1, delAlpha: 0, lisAlpha: 0)
                 self.setIconPosition( 30, latPos: translation.x + 350, delPos: 260, lisPos: translation.x +  350)
                 // delete
             } else if (translation.x > 260) {
-                
                 self.setBackcolorAlpha(self.redColor,archAlpha: 0, latAlpha: 0, delAlpha: 1, lisAlpha: 0)
                 self.setIconPosition( translation.x - 30, latPos: 290, delPos: translation.x - 30, lisPos: 260)
                 // list

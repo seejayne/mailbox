@@ -9,9 +9,20 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="MailboxViewController" customModule="mailbox" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1430"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="JJY-Rx-BPr" userLabel="Navigation">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" id="zoA-LG-tOm">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="top" id="gBg-4a-Qdi" userLabel="MainContent">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1430"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -78,7 +89,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="v7m-vy-TuI">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="v7m-vy-TuI">
                                                 <rect key="frame" x="98" y="18" width="123" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <segments>
@@ -90,6 +101,10 @@
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Ky9-Ts-0vN" appends="YES" id="52q-oU-nvK"/>
+                                        </connections>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" id="vju-1j-s56" userLabel="FakeModalView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="426"/>
@@ -110,9 +125,12 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mW8-22-Vr8" appends="YES" id="61N-mv-vbB"/>
+                        </connections>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="1430"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="archiveIconImageView" destination="qBt-fu-hUs" id="bIC-6A-BVe"/>
                         <outlet property="deleteIconImageView" destination="ZFG-d7-ayo" id="sAV-tr-qcJ"/>
@@ -120,6 +138,7 @@
                         <outlet property="laterIconImageView" destination="rWA-rp-fRs" id="oUb-Wi-6aU"/>
                         <outlet property="listIconImageView" destination="9zg-5N-DhP" id="FFa-Yn-FsU"/>
                         <outlet property="listView" destination="p2g-UN-Ehd" id="dI3-zq-Vpn"/>
+                        <outlet property="mainContentView" destination="gBg-4a-Qdi" id="13i-6X-Ifg"/>
                         <outlet property="messageImageView" destination="4Ky-Mi-xQa" id="VqO-7s-L2V"/>
                         <outlet property="messageView" destination="8H2-b6-bay" id="Nqq-v7-gkk"/>
                         <outlet property="rescheduleView" destination="T2y-0a-RQp" id="INE-yE-6X2"/>
@@ -137,6 +156,16 @@
                         <action selector="onPanGesture:" destination="vXZ-lx-hvc" id="17U-HQ-mSB"/>
                     </connections>
                 </panGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="mW8-22-Vr8">
+                    <connections>
+                        <action selector="onScreenEdge:" destination="vXZ-lx-hvc" id="W65-od-fYe"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Ky9-Ts-0vN">
+                    <connections>
+                        <action selector="onNavPan:" destination="vXZ-lx-hvc" id="eQD-lB-9BK"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="83" y="144"/>
         </scene>
@@ -150,6 +179,7 @@
         <image name="list" width="320" height="568"/>
         <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
+        <image name="menu" width="320" height="568"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
         <image name="reschedule" width="320" height="568"/>

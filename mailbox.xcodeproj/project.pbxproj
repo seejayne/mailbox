@@ -413,6 +413,7 @@
 				85CA296D19D607EE00AECF6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85CA296E19D607EE00AECF6F /* Build configuration list for PBXNativeTarget "mailboxTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +422,7 @@
 				85CA297019D607EE00AECF6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
