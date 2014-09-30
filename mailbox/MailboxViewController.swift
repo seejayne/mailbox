@@ -21,6 +21,7 @@ class MailboxViewController: UIViewController {
     @IBOutlet weak var rescheduleView: UIImageView!
     @IBOutlet weak var listView: UIImageView!
     @IBOutlet weak var mainContentView: UIView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     
     var imageCenter: CGPoint!
@@ -33,13 +34,12 @@ class MailboxViewController: UIViewController {
     let yellowColor = UIColor(red: (250/256), green: (211/256), blue: (51/256), alpha: 1)
     let brownColor = UIColor(red: (215/256), green: (165/256), blue: (51/256), alpha: 1)
     let greenColor = UIColor(red: (116/256), green: (215/256), blue: (104/256), alpha: 1)
-    
+    let blueColor = UIColor(red: (112/256), green: (197/256), blue: (224/256), alpha: 1)
     // start up stuff
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.contentSize.height = feedimageView.frame.height + messageImageView.frame.height + 165
-        messageView.backgroundColor = greyColor
 
     }
     // set message background color and icon alphas
@@ -56,8 +56,6 @@ class MailboxViewController: UIViewController {
     }
     // set icon positions
     func setIconPosition (archPos: CGFloat, latPos: CGFloat, delPos: CGFloat, lisPos: CGFloat){
-        
-        // position (30, 280, 260, 60)
         self.archiveIconImageView.center.x = archPos
         self.laterIconImageView.center.x = latPos
         self.deleteIconImageView.center.x = delPos
@@ -66,9 +64,26 @@ class MailboxViewController: UIViewController {
     // move the feed up
     func shiftFeed(){
         self.feedimageView.center.y = 678
-        self.scrollView.contentSize = CGSize(width: 320, height: 1294)
+        self.scrollView.contentSize.height = feedimageView.frame.height
     }
 
+    @IBAction func onSegmentChanged(sender: UISegmentedControl) {
+        var selectedSeg = sender.selectedSegmentIndex
+        println(selectedSeg)
+        var segTint = sender.tintColor
+        
+        if selectedSeg == 0 {
+            segmentedControl.tintColor = yellowColor
+        } else if selectedSeg == 1{
+            segmentedControl.tintColor = blueColor
+        } else if selectedSeg == 2{
+            segmentedControl.tintColor = greenColor
+        }
+    
+        
+        //var selectedSegmentIndex: Int
+        //var tintColor: UIColor
+    }
     @IBAction func onTap(sender: UITapGestureRecognizer) {
         if modalUp{
             UIView.animateWithDuration(0.5, animations: {
