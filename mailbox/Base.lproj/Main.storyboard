@@ -123,6 +123,14 @@
                                             </imageView>
                                         </subviews>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="archivefeed" id="p1f-el-4V0">
+                                        <rect key="frame" x="0.0" y="64.5" width="320" height="506"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laterfeed" id="kYO-Wc-UKw">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="506"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -133,11 +141,12 @@
                             <outletCollection property="gestureRecognizers" destination="mW8-22-Vr8" appends="YES" id="61N-mv-vbB"/>
                         </connections>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="archiveFeed" destination="p1f-el-4V0" id="0Ic-h3-w59"/>
                         <outlet property="archiveIconImageView" destination="qBt-fu-hUs" id="bIC-6A-BVe"/>
                         <outlet property="deleteIconImageView" destination="ZFG-d7-ayo" id="sAV-tr-qcJ"/>
                         <outlet property="feedimageView" destination="EN0-t1-eZA" id="5Or-4b-Shj"/>
+                        <outlet property="laterFeed" destination="kYO-Wc-UKw" id="BLh-fp-dup"/>
                         <outlet property="laterIconImageView" destination="rWA-rp-fRs" id="oUb-Wi-6aU"/>
                         <outlet property="listIconImageView" destination="9zg-5N-DhP" id="FFa-Yn-FsU"/>
                         <outlet property="listView" destination="p2g-UN-Ehd" id="dI3-zq-Vpn"/>
@@ -177,10 +186,12 @@
     </scenes>
     <resources>
         <image name="archive_icon" width="25" height="25"/>
+        <image name="archivefeed" width="320" height="430"/>
         <image name="delete_icon" width="25" height="25"/>
         <image name="feed" width="320" height="1202"/>
         <image name="help_label" width="320" height="37"/>
         <image name="later_icon" width="25" height="25"/>
+        <image name="laterfeed" width="320" height="430"/>
         <image name="list" width="320" height="568"/>
         <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
