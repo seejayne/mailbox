@@ -102,6 +102,16 @@
                                                     <action selector="onSegmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Sgn-i4-7x1"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="auf-on-sjG">
+                                                <rect key="frame" x="272" y="18" width="40" height="39"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onComposeView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vD8-0t-soX"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
@@ -123,14 +133,71 @@
                                             </imageView>
                                         </subviews>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="archivefeed" id="p1f-el-4V0">
-                                        <rect key="frame" x="0.0" y="64.5" width="320" height="506"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="archivefeed" id="p1f-el-4V0">
+                                        <rect key="frame" x="360" y="64.5" width="320" height="506"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laterfeed" id="kYO-Wc-UKw">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="506"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laterfeed" id="kYO-Wc-UKw">
+                                        <rect key="frame" x="-360" y="66" width="320" height="506"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <view alpha="0.0" contentMode="scaleToFill" id="mZ3-c2-5qb" userLabel="ComposeView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view alpha="0.5" contentMode="scaleToFill" id="dfR-dE-Oeq" userLabel="LighboxView">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="l29-lo-BFW" appends="YES" id="519-SM-XEr"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" id="mEj-t0-j8c" userLabel="ComposeFormView">
+                                                <rect key="frame" x="0.0" y="120" width="320" height="211"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="composeform" id="u96-kF-F9J">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="211"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="gdo-FG-ybP" userLabel="tofield">
+                                                        <rect key="frame" x="41" y="10" width="238" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="bpy-15-BMf" userLabel="bodyfield">
+                                                        <rect key="frame" x="19" y="90" width="282" height="81"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="gTe-eR-bAs" userLabel="subjectfield">
+                                                        <rect key="frame" x="80" y="45" width="217" height="33"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose_nav" id="TbH-qc-XPw">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bLW-Ch-ZYI">
+                                                <rect key="frame" x="0.0" y="27" width="69" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onCancelCompose:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9re-7u-1tq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -144,6 +211,8 @@
                     <connections>
                         <outlet property="archiveFeed" destination="p1f-el-4V0" id="0Ic-h3-w59"/>
                         <outlet property="archiveIconImageView" destination="qBt-fu-hUs" id="bIC-6A-BVe"/>
+                        <outlet property="composeFormView" destination="mEj-t0-j8c" id="9Vu-oO-nIM"/>
+                        <outlet property="composeView" destination="mZ3-c2-5qb" id="YGe-IZ-lEB"/>
                         <outlet property="deleteIconImageView" destination="ZFG-d7-ayo" id="sAV-tr-qcJ"/>
                         <outlet property="feedimageView" destination="EN0-t1-eZA" id="5Or-4b-Shj"/>
                         <outlet property="laterFeed" destination="kYO-Wc-UKw" id="BLh-fp-dup"/>
@@ -156,6 +225,7 @@
                         <outlet property="rescheduleView" destination="T2y-0a-RQp" id="INE-yE-6X2"/>
                         <outlet property="scrollView" destination="ggI-5Z-d9A" id="mtJ-Ju-HLM"/>
                         <outlet property="segmentedControl" destination="v7m-vy-TuI" id="LP8-ek-vJR"/>
+                        <outlet property="toEmailTextField" destination="gdo-FG-ybP" id="wL3-8n-QdF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -180,6 +250,11 @@
                         <action selector="onNavPan:" destination="vXZ-lx-hvc" id="eQD-lB-9BK"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="l29-lo-BFW">
+                    <connections>
+                        <action selector="onTapComposeDismiss:" destination="vXZ-lx-hvc" id="UtH-QJ-m1U"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="83" y="144"/>
         </scene>
@@ -187,6 +262,8 @@
     <resources>
         <image name="archive_icon" width="25" height="25"/>
         <image name="archivefeed" width="320" height="430"/>
+        <image name="compose_nav" width="320" height="64"/>
+        <image name="composeform" width="320" height="211"/>
         <image name="delete_icon" width="25" height="25"/>
         <image name="feed" width="320" height="1202"/>
         <image name="help_label" width="320" height="37"/>

@@ -25,10 +25,14 @@ class MailboxViewController: UIViewController {
     
     @IBOutlet weak var archiveFeed: UIImageView!
     @IBOutlet weak var laterFeed: UIImageView!
-    
+    @IBOutlet weak var toEmailTextField: UITextField!
+    @IBOutlet weak var composeView: UIView!
+    @IBOutlet weak var composeFormView: UIView!
+
     var imageCenter: CGPoint!
     var mainContentCenter: CGPoint!
     var modalUp = false
+    var composeUp = true
     
     // set up colors here
     let greyColor = UIColor(red: (223/256), green: (228/256), blue: (232/256), alpha: 1)
@@ -38,15 +42,21 @@ class MailboxViewController: UIViewController {
     let greenColor = UIColor(red: (116/256), green: (215/256), blue: (104/256), alpha: 1)
     let blueColor = UIColor(red: (112/256), green: (197/256), blue: (224/256), alpha: 1)
     
-    // start up stuff
+    // start up stuff**********************
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.contentSize.height = feedimageView.frame.height + messageImageView.frame.height + 165
         archiveFeed.frame.origin.x = 320
         laterFeed.frame.origin.x = -320
+        
+        //composeUp = true
+        
+        
 
     }
+    
+    // MY MINI FUNCTIONS!*******************
     // set message background color and icon alphas
     func setBackcolorAlpha (backColor: UIColor, archAlpha: CGFloat, latAlpha: CGFloat, delAlpha: CGFloat, lisAlpha: CGFloat){
         
@@ -84,6 +94,28 @@ class MailboxViewController: UIViewController {
         laterFeed.alpha = laterAlpha
     }
 
+    // show or hide New Message
+    func composeMode(var compose: Bool){
+        if  compose == false {
+            // hide
+            view.endEditing(true)
+            UIView.animateWithDuration(0.2, animations: {
+                self.composeFormView.frame.origin.y = 120
+                self.composeView.alpha = 0
+                }, completion: nil)
+            compose = true
+        } else {
+            // show
+            UIView.animateWithDuration(0.4, animations: {
+                self.composeFormView.frame.origin.y = 80
+                self.composeView.alpha = 1
+                }, completion: nil)
+            toEmailTextField.becomeFirstResponder()
+            compose = false
+        }
+    }
+    
+    // IB ACTION FUNCTIONS!*******************
     // Toggle between segment views
     @IBAction func onSegmentChanged(sender: UISegmentedControl) {
         var selectedSeg = sender.selectedSegmentIndex
@@ -104,6 +136,8 @@ class MailboxViewController: UIViewController {
         //var selectedSegmentIndex: Int
         //var tintColor: UIColor
     }
+    
+    // dismiss modals
     @IBAction func onTap(sender: UITapGestureRecognizer) {
         if modalUp{
             UIView.animateWithDuration(0.5, animations: {
@@ -113,6 +147,24 @@ class MailboxViewController: UIViewController {
                 }, completion: nil)
         }
     }
+  
+    // dismiss compose view
+    @IBAction func onTapComposeDismiss(sender: UITapGestureRecognizer) {
+        if composeUp{
+            composeMode(false)
+        }
+    }
+    // cancel out of the compose view
+    @IBAction func onCancelCompose(sender: UIButton) {
+        composeMode(false)
+    }
+    
+    @IBAction func onComposeView(sender: UIButton) {
+        composeMode(true)
+    }
+    
+    
+    
     
     // Page edge thing didnt really work, using a regular pan instead.
     @IBAction func onNavPan(sender: UIPanGestureRecognizer) {
@@ -139,6 +191,7 @@ class MailboxViewController: UIViewController {
             })
         }
     }
+    // message panning
     @IBAction func onPanGesture(gestureRecognizer: UIPanGestureRecognizer) {
         
         var location = gestureRecognizer.locationInView(view)
