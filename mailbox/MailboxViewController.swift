@@ -150,21 +150,15 @@ class MailboxViewController: UIViewController {
   
     // dismiss compose view
     @IBAction func onTapComposeDismiss(sender: UITapGestureRecognizer) {
-        if composeUp{
-            composeMode(false)
-        }
+        composeMode(false)
     }
     // cancel out of the compose view
     @IBAction func onCancelCompose(sender: UIButton) {
         composeMode(false)
     }
-    
     @IBAction func onComposeView(sender: UIButton) {
         composeMode(true)
     }
-    
-    
-    
     
     // Page edge thing didnt really work, using a regular pan instead.
     @IBAction func onNavPan(sender: UIPanGestureRecognizer) {
@@ -182,7 +176,7 @@ class MailboxViewController: UIViewController {
             }
         } else if sender.state == UIGestureRecognizerState.Ended{
             
-            UIView.animateWithDuration(0.3, animations:{
+            UIView.animateWithDuration(0.2, animations:{
                 if velocity.x > 0 {
                     self.mainContentView.center.x = 450
                 } else {
